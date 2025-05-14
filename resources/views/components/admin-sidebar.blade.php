@@ -13,8 +13,8 @@
               <li class="dropdown {{ Request::routeIs('admin.company*')?'active':''}} ">
               <a href="{{route('admin.company.index')}}" class="nav-link"><i data-feather="home"></i><span>Company</span></a>
             </li>
-              <li class="dropdown ">
-              <a href="index.html" class="nav-link"><i data-feather="tag"></i><span>Category</span></a>
+              <li class="dropdown  {{ Request::routeIs('admin.category*')?'active':''}}">
+              <a href="{{route('admin.category.index')}}" class="nav-link"><i data-feather="tag"></i><span>Category</span></a>
             </li>  <li class="dropdown ">
               <a href="index.html" class="nav-link"><i class="fas fa-newspaper"></i><span>Article</span></a>
             </li>
