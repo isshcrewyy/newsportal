@@ -14,8 +14,8 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-6 pb-2">
-                                        <label for="name">Enter Category Title</label>
-                                        <input type="text" name="name" id="name" class="form-control">
+                                        <label for="title">Enter Category Title</label>
+                                        <input type="text" name="title" id="title" class="form-control">
                                     </div>
 
                                     <div class="col-12 pb-2">

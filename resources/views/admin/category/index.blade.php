@@ -35,7 +35,11 @@
                                                     {{ $category->slug }}
                                                 </td>
                                                 <td>
-                                                    {{ $category->status }}
+                                                    @if ($category->status == 1)
+                                                    <span class="badge bg-success text-white">Active</span>
+                                                    @else
+                                                     <span class="badge bg-danger text-white">Inactive</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('admin.category.destroy', $category->id) }}"

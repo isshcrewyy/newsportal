@@ -32,8 +32,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $category = new Category();
-        $category->title = $request->name;
-        $category->slug = Str::slug($request->name);
+        $category->title = $request->title;
+        $category->slug = Str::slug($request->title);
         $category->meta_keywords = $request->meta_keywords;
         $category->meta_description = $request->meta_description;
         $category->save();
@@ -53,7 +53,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findorfail($id);
+        return view('admin.category.edit', compact('category'));
+
     }
 
     /**
@@ -61,7 +63,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+         $category = Category::find($id);
+        $category->title = $request->title;
+        $category->status = $request->status;
+        $category->meta_keywords = $request->meta_keywords;
+        $category->meta_description = $request->meta_description;
+        $category->save();
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -69,6 +77,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $categories = Category::find($id);
+        $categories->delete($id);
+        return redirect()->route('admin.category.index');
+
     }
 }

@@ -5,52 +5,54 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header justify-content-between">
-                            <h4>Company Edit</h4>
-                            <a href="{{ route('admin.company.index') }}" class="btn btn-primary">go back</a>
+                            <h4>Category Edit</h4>
+                            <a href="{{ route('admin.category.index') }}" class="btn btn-primary">go back</a>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('admin.company.update', $company->id)}}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('admin.category.update',$category->id) }}" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
-                                    <div class="col-6 pb-2">
-                                        <label for="name">Enter Company Name</label>
-                                        <input type="text" name="name" id="name" class="form-control" value="{{$company->name}}">
+                                    <div class="col-6 pb-4">
+                                        <label for="title">Enter Category Title</label>
+                                        <input type="text" name="title" id="title" class="form-control" value="{{$category->title}}">
+                                    </div>
+                                    @error('title')
+                                    <p>
+                                        <span class="text-danger">{{$message}}</span>
+                                    </p>
+
+                                    @enderror
+
+                                    <div class="col-12 pb-3">
+                                        <label for="status">Change status</label>
+                                        <select name="status" id=""status>
+                                            <option value="1" {{$category->status == 1 ? 'selected' : ''}}>Active</option>
+                                            <option value="0" {{$category->status == 0 ? 'selected': ''}}>Inactive</option>
+                                        </select>
+
+                                    </div>
+                                    @error('status')
+                                    <p>
+                                        <span class="text-danger">{{$message}}</span>
+                                    </p>
+
+                                    @enderror
+                                    <div class="col-12 pb-2">
+                                        <label for="meta_keywords">Enter Meta Keywords</label>
+                                        <textarea name="meta_keywords" id="meta_keywords" class="form-control" value="{{$category->meta_keywords}}">
+                                        </textarea>
                                     </div>
 
-                                    <div class="col-6 pb-2">
-                                        <label for="email">Enter Company Email</label>
-                                        <input type="text" name="email" id="email" class="form-control" value="{{$company->email}}">
-                                    </div>
-
-                                    <div class="col-6 pb-2">
-                                        <label for="phone">Enter Company Phone</label>
-                                        <input type="text" name="phone" id="phone" class="form-control" value="{{$company->phone}}">
-                                    </div>
-
-                                    <div class="col-6 pb-2">
-                                        <label for="youtube">Enter Youtube link</label>
-                                        <input type="text" name="youtube" id="youtube" class="form-control" value="{{$company->youtube}}">
-                                    </div>
-
-                                    <div class="col-6 pb-2">
-                                        <label for="facebook">Enter Facebook Link</label>
-                                        <input type="text" name="facebook" id="facebook" class="form-control" value="{{$company->facebook}}">
-                                    </div>
-
-                                    <div class="col-6 pb-2">
-                                        <label for="instagram">Enter Instagram Link</label>
-                                        <input type="text" name="instagram" id="instagram" class="form-control" value="{{$company->instagram}}">
-                                    </div>
-
-                                    <div class="col-6 pb-2">
-                                        <label for="logo">Upload Company Logo</label>
-                                        <input type="file" name="logo" id="logo" class="form-control">
-                                        <img src="{{asset($company->logo)}}" width="120" alt="">
+                                    <div class="col-12 pb-2">
+                                        <label for="description">Enter Meta Description</label>
+                                        <textarea name="description" id="description" class="form-control" value="{{$category->description}}">
+                                        </textarea>
                                     </div>
 
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-success">Update Record</button>
+                                        <button type="submit" class="btn btn-success">Save Record</button>
                                     </div>
                                 </div>
                             </form>
