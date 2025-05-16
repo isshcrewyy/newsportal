@@ -23,26 +23,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($articles as $index=>$article)
+                                        @foreach ($articles as $index => $article)
                                             <tr>
                                                 <td>
-                                                    {{++$index}}
+                                                    {{ ++$index }}
                                                 </td>
                                                 <td>
                                                     {{ $article->title }}
                                                 </td>
                                                 <td>
-                                                   <img src="{{asset($article->image)}}" alt="">
+                                                    <img src="{{ asset($article->image) }}" height="200"
+                                                        width="200" alt="">
                                                 </td>
-                                                <td>
+                                                                         <td>
                                                     @if ($article->status == 'pending')
-                                                    <span class="badge bg-warning text-white">Pending</span>
-                                                    @elseif ($article->status == 'approved')
-                                                     <span class="badge bg-success text-white">Approved</span>
-                                                     @else
-                                                     <span class="badge bg-danger text-white">Rejected</span>
+                                                        <span class="badge bg-warning text-white">Pending</span>
+                                                    @elseif($article->status == 'approved')
+                                                        <span class="badge bg-success text-white">Approved</span>
+                                                    @else
+                                                        <span class="badge bg-danger text-white">Rejected</span>
                                                     @endif
                                                 </td>
+
                                                 <td>
                                                     <form action="{{ route('admin.article.destroy', $article->id) }}"
                                                         method="post">

@@ -23,8 +23,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-         $categories = Category::all();
-        return view('admin.article.create',compact('categories'));
+        $categories = Category::all();
+        return view('admin.article.create', compact('categories'));
     }
 
     /**
@@ -32,17 +32,17 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-         $article = new Article();
+        $article = new Article();
         $article->title = $request->title;
         $article->content = $request->content;
         $article->meta_keywords = $request->meta_keywords;
         $article->meta_description = $request->meta_description;
-          $file = $request->image;
-       if($file) {
-        $filename = time().".".$file->getClientOriginalExtension();
-        $file->move('images', $filename);
-        $article->image = "images/$filename";
-       }
+        $file = $request->image;
+        if ($file) {
+            $filename = time() . "." . $file->getClientOriginalExtension();
+            $file->move('images', $filename);
+            $article->image = "images/$filename";
+        }
         $article->save();
         $article->categories()->attach($request->categories);
         return redirect()->route('admin.article.index');
@@ -61,7 +61,9 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $article = Article::findorfail($id);
+        $categories = Category::all();
+        return view('admin.article.edit', compact('article', 'categories'));
     }
 
     /**
@@ -69,7 +71,22 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $article = Article::findorfail($id);
+        $article->title = $request->title;
+        $article->content = $request->content;
+        $article->meta_keywords = $request->meta_keywords;
+        $article->meta_description = $request->meta_description;
+        $article->status = $request->status;
+
+        $file = $request->image;
+        if ($file) {
+            $filename = time() . "." . $file->getClientOriginalExtension();
+            $file->move('images', $filename);
+            $article->image = "images/$filename";
+        }
+        $article->save();
+         $article->categories()->sync($request->categories);
+        return redirect()->route('admin.article.index');
     }
 
     /**
@@ -77,6 +94,8 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+        return redirect()->route('admin.article.index');
     }
 }

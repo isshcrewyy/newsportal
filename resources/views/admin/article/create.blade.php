@@ -14,7 +14,7 @@
                                 @csrf
                                 @method('POST')
                                 <div class="row">
-                                        <div class="col-6 pb-2">
+                                    <div class="col-6 pb-2">
                                         <label for="categories">Select Categories</label>
                                         <select name="categories[]" id="categories" class="form-control select2"
                                             multiple="multiple">
@@ -28,7 +28,7 @@
                                         <input type="text" name="title" id="title" class="form-control">
                                     </div>
 
-                                       <div class="col-12 pb-2">
+                                    <div class="col-12 pb-2">
                                         <label for="content">Enter Content</label>
                                         <textarea name="content" id="content" class="form-control summernote">
                                         </textarea>
@@ -40,11 +40,11 @@
                                     </div>
 
                                     <div class="col-12 pb-2">
-                                        <label for="description">Enter Meta Description</label>
-                                        <textarea name="description" id="description" class="form-control">
+                                        <label for="meta_description">Enter Meta Description</label>
+                                        <textarea name="meta_description" id="meta_description" class="form-control">
                                         </textarea>
                                     </div>
-                                        <div class="col-6 pb-2">
+                                    <div class="col-6 pb-2">
                                         <label for="image">Upload Image</label>
                                         <input type="file" name="image" id="image" class="form-control">
                                     </div>
