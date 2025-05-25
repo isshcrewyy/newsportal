@@ -1,7 +1,7 @@
  <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html"> <img alt="image" src="/assets/img/logo.png" class="header-logo" /> <span
-                class="logo-name">Otika</span>
+            <a href="{{route('dashboard')}}"> <span
+                class="logo-name">NewsPortal</span>
             </a>
           </div>
           <ul class="sidebar-menu ">
@@ -18,8 +18,8 @@
             </li>  <li class="dropdown {{ Request::routeIs('admin.article*')?'active':''}}">
               <a href="{{route('admin.article.index')}}" class="nav-link"><i class="fas fa-newspaper"></i><span>Article</span></a>
             </li>
-              <li class="dropdown  ">
-              <a href="index.html" class="nav-link"><i data-feather="image"></i><span>Advertise</span></a>
+              <li class="dropdown  {{ Request::routeIs('admin.advertise*')?'active':''}}">
+              <a href="{{route('admin.advertise.index')}}" class="nav-link"><i data-feather="image"></i><span>Advertise</span></a>
             </li>
 
             {{-- <li class="dropdown">

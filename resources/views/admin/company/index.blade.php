@@ -41,7 +41,7 @@
                                 {{$company->name}}
                             </td>
                             <td>
-                              <img alt="image" src="{{asset($company->logo)}}" width="35">
+                              <img alt="image" src="{{asset($company->logo)}}" height="120" width="120">
                             </td>
                             <td>
                                 {{$company->email}}

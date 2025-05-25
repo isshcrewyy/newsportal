@@ -41,13 +41,17 @@
                                     @enderror
                                     <div class="col-12 pb-2">
                                         <label for="meta_keywords">Enter Meta Keywords</label>
-                                        <textarea name="meta_keywords" id="meta_keywords" class="form-control" value="{{$category->meta_keywords}}">
+                                        <textarea name="meta_keywords" id="meta_keywords" class="form-control">
+                                            {{$category->meta_keywords}}
                                         </textarea>
                                     </div>
 
                                     <div class="col-12 pb-2">
-                                        <label for="description">Enter Meta Description</label>
-                                        <textarea name="description" id="description" class="form-control" value="{{$category->description}}">
+                                        <label for="meta_description">Enter Meta Description</label>
+                                        <textarea name="meta_description" id="meta_description" class="form-control">
+
+
+                                            {{$category->meta_description}}
                                         </textarea>
                                     </div>
 
